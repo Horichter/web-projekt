@@ -1,0 +1,111 @@
+h1{
+	display:inline-block;
+	font-size: 30px;
+	padding-top: 5px;
+}
+h2{
+	font-size: 25px;
+}
+h1,h2{
+	color: ghostwhite;
+	margin-bottom: 2%;
+}
+
+body{
+	background: rgb(14,14,16);
+}
+
+input{
+	margin-bottom: 20px;
+}
+textarea{
+	margin-bottom: 20px;
+}
+
+.logo{
+	padding-top: 10px;
+	float: left;
+	width: 55px;
+    height: auto;
+}
+
+.mainContainer{
+	border-color: white; 
+	border-width: 5px; 
+	border-style: solid; 
+	overflow: auto;
+	margin-left: 5%; 
+	margin-right: 5%;
+	color: ghostwhite;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.subContainer{
+	border-bottom: 2px solid ghostwhite;
+}
+
+.btn-toNew{
+	margin-top:10px;
+	margin-right:10px;
+	float: right;
+}
+
+.btn{
+	background: ghostwhite;
+}
+
+.buttonDetailsToMain{
+	margin-top:15px;
+	
+}
+.detailsButton{
+	position: sticky; 
+	right:  10%;
+}
+
+.detailsLink{
+	position: sticky; 
+	right:  10%;
+}
+
+.imageGraph{
+	margin-left: 5%;
+  	margin-right: 5%;
+	object-fit: cover;
+	margin-top: 7.5%;
+
+}
+
+.details{
+	color: ghostwhite;
+}
+
+.newPost{
+	color: ghostwhite;
+}
+
+
+
+.detailsDescription{	
+	border-color: white; 
+	border-width: 5px; 
+	border-style: solid; 
+	overflow: auto;
+	margin-left: 5%; 
+	margin-right: 5%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.detailsPrice{
+	float: right;
+}
+
+.detailsDate{
+	float: left;
+}
+
+#detDate, #detPrice{
+	display:inline-block;
+}

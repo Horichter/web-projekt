@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
+    <link th:href="@{css/styles.css}" type="text/css" rel="stylesheet"/>
+
+    <title>My Bitcoin Diary - New Post</title>
+  </head>
+  <body>
+    <img class = "logo" src="images/Bitcoin-Logo.png"/>
+    <h1>My Bitcoin Diary</h1>
+    <h2>New Entry</h2>
+
+    <center>
+      <div class = newPost text-center>
+        <form action="/newPost" method="post" enctype="multipart/form-data">
+          <ul style="list-style: none;">
+            <li>
+              <input type="date" id="date" name="date" placeholder="dd-mm-yyyy">
+            </li>
+            <li>
+              <input type="text" id="title" name="title" placeholder="Title:">
+            </li>
+            <li>
+              <input type="text" id = "price" name="price" placeholder="Price:">
+            </li>
+            <li>
+              <textarea id="description" name="description" rows="4" cols="35" placeholder="Description:"></textarea >
+            </li>
+            <li class="button">
+              <button type="submit">Submit Post</button>
+            </li>
+          </ul>
+        </form>
+
+        <ul style="list-style: none;">
+          <li><button onclick="window.location='../';">Back to Mainsite</button></li>
+        </ul>
+      </div>
+      <div th:if="${message}">
+        <h2 th:text="${message} + ' ' + ${title}"/>
+      </div>
+    </center>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>
