@@ -47,13 +47,19 @@ public class mainController {
         p.setPrice(Double.parseDouble(price));
         p.setDescription(description);
 
-        model.addAttribute("post", postRepository.findAll());
-        model.addAttribute("title", title);
+        postRepository.save(p);
 
         redirectAttributes.addFlashAttribute("title", title);
         redirectAttributes.addFlashAttribute("message", "Post erfolgreich erstellt! Titel lautet:");
 
         return "redirect:/newPost";
+    }
+
+    @GetMapping("/all")
+    public String getAll(Model model){
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        return "all";
     }
 
 }
