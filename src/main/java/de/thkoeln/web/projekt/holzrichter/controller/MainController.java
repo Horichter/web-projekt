@@ -8,15 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-public class mainController {
+public class MainController {
+    private static final String FOLDER_UPLOAD = "C://Users//Admin//Desktop//web//images//";
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
@@ -38,15 +44,19 @@ public class mainController {
                               @RequestPart("title") String title,
                               @RequestPart("price") String price,
                               @RequestPart("description")String description,
-                              RedirectAttributes redirectAttributes) throws ParseException {
+                              @RequestPart("image") MultipartFile image,
+                              RedirectAttributes redirectAttributes) throws ParseException, IOException {
         Post p = new Post();
         Date date = formatter.parse(dateInput);
-        System.out.println(date);
         p.setSubmissionDate(date);
         p.setTitle(title);
         p.setPrice(Double.parseDouble(price));
         p.setDescription(description);
+        byte[] imageByteArray = image.getBytes();
+        Path path = Paths.get(FOLDER_UPLOAD + image.getOriginalFilename());
+        p.setImageName(image.getOriginalFilename());
 
+        Files.write(path, imageByteArray);
         postRepository.save(p);
 
         redirectAttributes.addFlashAttribute("title", title);

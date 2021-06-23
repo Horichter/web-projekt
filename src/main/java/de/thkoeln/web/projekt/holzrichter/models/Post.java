@@ -11,8 +11,10 @@ import java.util.Date;
 @Entity
 public class Post {
     private String title;
+    private String imageName;
     private Double price;
     private String description;
+
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date submissionDate;
     @Id
@@ -57,5 +59,13 @@ public class Post {
 
     public Long getId() {
         return id;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
