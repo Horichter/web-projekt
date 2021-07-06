@@ -1,0 +1,58 @@
+<!doctype HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link th:href="@{/css/styles.css}" type="text/css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <title>My Bitcoin Diary</title>
+  </head>
+  <body>
+    <img class = "logo" src="/images/Bitcoin-Logo.png">
+    <h1>My Bitcoin Diary</h1>
+    <h2>Details for: <span th:text="${post.get.getTitle()}"/></h2>
+
+    <div class = "details">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center" id = "detDate">
+            Date: <span th:text="${#dates.format(post.get.getSubmissionDate(), 'dd-MM-yyyy')}"/>
+          </div>
+          <div class="col text-center" id = "detPrice">
+            Price: <span th:text="${post.get.getPrice()}"/>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="detailsDescription">
+        Description: <br><span th:text="${post.get.getDescription()}"/>
+      </div>
+
+      <div class="text-center">
+        <br>
+        <picture><img class="img-fluid" th:src="@{/posts/{id}/image (id=${post.get().getId()})}"></picture>
+        <br>
+      </div>
+
+      <div class = "container">
+        <div class = "row">
+          <div class = "col text-center">
+            <button class = "buttonDetailsToMain" onclick="window.location='../';">Back to Mainsite</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap Bundle with Popper th:src ="@{C:/Users/Admin/Desktop/web/images/btc-down.jpeg}"-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>

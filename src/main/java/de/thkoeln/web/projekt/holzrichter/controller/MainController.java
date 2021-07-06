@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,8 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -29,13 +32,15 @@ public class MainController {
     private PostRepository postRepository;
 
     @GetMapping("/")
-    public String getIndex(){
+    public String getIndex(Model model){
+        List<Post> posts = (List<Post>) postRepository.findAll();
+        model.addAttribute("posts", posts);
         return "index";
     }
 
     @GetMapping("/newPost")
     public String newPost(){
-        return "NewPost";
+        return "newPost";
     }
 
     @PostMapping("/newPost")
@@ -65,11 +70,10 @@ public class MainController {
         return "redirect:/newPost";
     }
 
-    @GetMapping("/all")
-    public String getAll(Model model){
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
-        return "all";
+    @GetMapping("/details/{id}")
+    public String getDetails(Model model, @PathVariable(value = "id")Long postID){
+        Optional<Post> post = postRepository.findById(postID);
+        model.addAttribute("post", post);
+        return "/details";
     }
-
 }

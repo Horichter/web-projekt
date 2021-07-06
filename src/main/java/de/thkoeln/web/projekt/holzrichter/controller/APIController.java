@@ -36,9 +36,9 @@ public class APIController {
     }
 
 
-    @GetMapping(value = "posts/{id}/{imagename}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getImageByID(@PathVariable(value = "id")Long postID, @PathVariable(value = "imagename") String imageName){
-        Path path = Paths.get(FOLDER_UPLOAD + imageName);
+    @GetMapping(value = "posts/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getImageByID(@PathVariable(value = "id")Long postID){
+        Path path = Paths.get(FOLDER_UPLOAD + postRepository.findById(postID).get().getImageName());
         try{
             return Files.readAllBytes(path);
         }

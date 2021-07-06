@@ -30,8 +30,8 @@ textarea{
 }
 
 .mainContainer{
-	border-color: white; 
-	border-width: 5px; 
+	border-color: white;
+	border-width: 5px;
 	border-style: solid; 
 	overflow: auto;
 	margin-left: 5%; 
