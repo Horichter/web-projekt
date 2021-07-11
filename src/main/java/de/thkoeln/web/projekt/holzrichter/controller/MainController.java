@@ -58,8 +58,8 @@ public class MainController {
         p.setPrice(Double.parseDouble(price));
         p.setDescription(description);
         byte[] imageByteArray = image.getBytes();
-        Path path = Paths.get(FOLDER_UPLOAD + image.getOriginalFilename());
-        p.setImageName(image.getOriginalFilename());
+        Path path = Paths.get(FOLDER_UPLOAD + /*image.getOriginalFilename()*/ postRepository.count() + ".jpeg");
+        p.setImageName(/*image.getOriginalFilename()*/postRepository.count() + ".jpeg");
 
         Files.write(path, imageByteArray);
         postRepository.save(p);
